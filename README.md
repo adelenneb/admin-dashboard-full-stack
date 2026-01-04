@@ -7,6 +7,7 @@
 ![H2](https://img.shields.io/badge/DB-H2-blue)
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 ![Angular Material](https://img.shields.io/badge/UI-Angular%20Material-3f51b5?logo=angular&logoColor=white)
+[![CI](https://github.com/adelenneb/admin-dashboard-full-stack/actions/workflows/ci.yml/badge.svg)](https://github.com/adelenneb/admin-dashboard-full-stack/actions/workflows/ci.yml)
 
 Admin/user dashboard with JWT auth, role-based access, and user CRUD.
 
