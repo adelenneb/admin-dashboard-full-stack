@@ -1,0 +1,39 @@
+# Node / Angular
+node_modules/
+.angular/
+/dist/
+admin-dashboard/node_modules/
+admin-dashboard/.angular/
+admin-dashboard/dist/
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs / temp
+npm-debug.log*
+yarn-error.log*
+*.log
+/tmp/
+
+# Backend build
+backend/target/
+backend/.mvn/
+backend/mvnw.cmd
+backend/mvnw
+backend/.DS_Store
+
+# Docker
+**/.env
+
+# H2 file (if ever persisted)
+*.h2.db
+*.mv.db
+
+# Coverage / test reports
+coverage/
+backend/surefire-reports/

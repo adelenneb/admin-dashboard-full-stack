@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      # Override the JWT secret in prod; keep this long
+      - SECURITY_JWT_SECRET=change-me-to-a-very-long-secret-key-1234567890-abcdef
+      - SPRING_PROFILES_ACTIVE=default
+    # H2 is embedded (in-memory). If you want file-based persistence, set
+    # spring.datasource.url=jdbc:h2:file:/data/admin and mount a volume.
+    # volumes:
+    #   - ./data/h2:/data
+
+  frontend:
+    build:
+      context: ./admin-dashboard
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
