@@ -1,0 +1,38 @@
+<div class="login-card">
+  <h2>Admin Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <label for="username">Email or Username</label>
+    <input
+      id="username"
+      type="text"
+      formControlName="username"
+      placeholder="admin or admin@example.com"
+      autocomplete="username"
+      [class.invalid]="username?.touched && username?.invalid"
+    />
+    <div class="error" *ngIf="username?.touched && username?.invalid">
+      <span *ngIf="username?.errors?.['required']">Username is required.</span>
+    </div>
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="••••••••"
+      autocomplete="current-password"
+      [class.invalid]="password?.touched && password?.invalid"
+    />
+    <div class="error" *ngIf="password?.touched && password?.invalid">
+      <span *ngIf="password?.errors?.['required']">Password is required.</span>
+    </div>
+
+    <button type="submit" [disabled]="isSubmitting || loginForm.invalid">
+      {{ isSubmitting ? 'Signing in...' : 'Login' }}
+    </button>
+  </form>
+
+  <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

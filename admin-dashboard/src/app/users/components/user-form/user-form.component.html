@@ -1,0 +1,63 @@
+<div class="user-form-card">
+  <h3>{{ user ? 'Edit User' : 'Create User' }}</h3>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <label for="username">Username</label>
+    <input
+      id="username"
+      type="text"
+      formControlName="username"
+      placeholder="username"
+      [class.invalid]="username?.touched && username?.invalid"
+    />
+    <div class="error" *ngIf="username?.touched && username?.invalid">
+      <span *ngIf="username?.errors?.['required']">Username is required.</span>
+      <span *ngIf="username?.errors?.['minlength']">Username must be at least 2 characters.</span>
+    </div>
+
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="user@example.com"
+      [class.invalid]="email?.touched && email?.invalid"
+    />
+    <div class="error" *ngIf="email?.touched && email?.invalid">
+      <span *ngIf="email?.errors?.['required']">Email is required.</span>
+      <span *ngIf="email?.errors?.['email']">Enter a valid email.</span>
+    </div>
+
+    <label for="role">Role</label>
+    <select id="role" formControlName="role" [class.invalid]="role?.touched && role?.invalid">
+      <option value="ADMIN">Admin</option>
+      <option value="USER">User</option>
+    </select>
+    <div class="error" *ngIf="role?.touched && role?.invalid">
+      <span *ngIf="role?.errors?.['required']">Role is required.</span>
+    </div>
+
+    <label for="password">Password <small *ngIf="user">(leave blank to keep existing)</small></label>
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="••••••••"
+      [class.invalid]="!user && password?.touched && password?.invalid"
+    />
+    <div class="error" *ngIf="!user && password?.touched && password?.invalid">
+      <span>Password is required for new users.</span>
+    </div>
+
+    <div class="actions">
+      <button mat-flat-button color="accent" type="submit">
+        <mat-icon>{{ user ? 'save' : 'person_add' }}</mat-icon>
+        {{ user ? 'Update' : 'Create' }}
+      </button>
+      <button mat-stroked-button type="button" class="secondary" (click)="onCancel()">
+        <mat-icon>close</mat-icon>
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

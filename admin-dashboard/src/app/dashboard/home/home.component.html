@@ -1,0 +1,33 @@
+<h2 class="page-title">Dashboard Overview</h2>
+
+<div class="grid">
+  <mat-card *ngFor="let stat of stats" class="stat-card">
+    <div class="stat-icon">
+      <mat-icon>{{ stat.icon }}</mat-icon>
+    </div>
+    <div>
+      <p class="stat-title">{{ stat.title }}</p>
+      <p class="stat-value">{{ stat.value }}</p>
+    </div>
+  </mat-card>
+</div>
+
+<mat-card class="panel">
+  <mat-card-title>Welcome back</mat-card-title>
+  <mat-card-subtitle>Here is a quick overview of today.</mat-card-subtitle>
+  <mat-card-content>
+    <p>Use the navigation to manage users, view reports, and update settings.</p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="chart-card">
+  <mat-card-title>Users & Sessions (Last 6 Months)</mat-card-title>
+  <mat-card-content>
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType"
+    ></canvas>
+  </mat-card-content>
+</mat-card>

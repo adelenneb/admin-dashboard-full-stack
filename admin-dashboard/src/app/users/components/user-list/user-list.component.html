@@ -1,0 +1,55 @@
+<div class="user-list-card">
+  <div class="header">
+    <button mat-stroked-button color="primary" type="button" routerLink="/dashboard" class="secondary">
+      <mat-icon>arrow_back</mat-icon>
+      Return to Dashboard
+    </button>
+    <h3>Users</h3>
+    <span class="spacer"></span>
+    <button mat-flat-button color="accent" type="button" (click)="onCreate()">
+      <mat-icon>person_add</mat-icon>
+      New User
+    </button>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+  <p *ngIf="loading">Loading users...</p>
+
+  <table *ngIf="!loading && users.length">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; trackBy: trackById">
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button mat-stroked-button color="primary" type="button" (click)="onEdit(user)">
+            <mat-icon>edit</mat-icon>
+            Edit
+          </button>
+          <button mat-stroked-button color="warn" type="button" (click)="onDelete(user)">
+            <mat-icon>delete</mat-icon>
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!loading && !users.length">No users found.</p>
+
+  <div *ngIf="showForm" class="form-wrapper">
+    <app-user-form
+      [user]="selectedUser"
+      (save)="onSave($event)"
+      (cancel)="onCancel()"
+    ></app-user-form>
+  </div>
+</div>

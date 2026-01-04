@@ -1,0 +1,47 @@
+<mat-sidenav-container class="layout-container" autosize>
+  <mat-sidenav
+    #sidenav
+    class="sidenav"
+    [mode]="isHandset ? 'over' : 'side'"
+    [opened]="!isHandset"
+    role="navigation"
+  >
+    <div class="brand">
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span>{{ dashboardTitle }}</span>
+    </div>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        *ngFor="let item of navItems"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        (click)="isHandset ? sidenav.close() : null"
+      >
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.label }}</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="topbar">
+      <button mat-icon-button (click)="sidenav.toggle()" *ngIf="isHandset" aria-label="Toggle sidenav">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="toolbar-title">{{ dashboardTitle }}</span>
+      <span class="spacer"></span>
+      <button mat-icon-button aria-label="User menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button mat-button color="accent" (click)="logout()" aria-label="Logout">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

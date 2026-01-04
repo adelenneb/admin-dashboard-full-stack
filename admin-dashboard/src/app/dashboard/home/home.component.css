@@ -1,0 +1,58 @@
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 70px;
+  padding: 0.35rem 0.5rem;
+}
+
+.stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.stat-title {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.stat-value {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.panel {
+  margin-top: 1rem;
+}
+
+.chart-card {
+  margin-top: 1rem;
+  min-height: 250px;
+}
+
+.chart-card canvas {
+  height: 180px !important;
+  max-height: 180px;
+  width: 100% !important;
+}
