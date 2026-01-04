@@ -37,6 +37,12 @@ Admin/user dashboard with JWT auth, role-based access, and user CRUD.
 - Frontend: `http://localhost:4200`
 - Backend: not exposed externally; frontend proxies `/api` to `backend:8080` via Nginx.
 
+## CI
+- GitHub Actions workflow (`.github/workflows/ci.yml`) runs on push/PR to `main`:
+  - Backend: JDK 21, `mvn test`
+  - Frontend: Node 20, `npm ci` + build prod
+- Badge CI: ![CI](https://github.com/adelenneb/admin-dashboard-full-stack/actions/workflows/ci.yml/badge.svg)
+
 ## Backend tests
 - From `backend/`: `mvn test`
 - Scenarios: login, protected dashboard access, role-based access to `/api/users`.
